@@ -1,0 +1,14 @@
+{% extends "practices/base.html" %}
+{% block body %}
+
+	{% for course in courses  %}
+		<h1> 
+			<a href="{% url "practices:topic-list" course.id %}">  
+			{{course}}</a> </h1>
+			<small> published on - {{course.pub_date.date}} &lt;&gt; updated on -  {{course.update_date.date}}</small>
+			<hr>
+			<p> {{course.description}}</p>
+		
+	{% endfor %}
+	
+{% endblock body %}
