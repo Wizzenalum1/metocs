@@ -1,0 +1,23 @@
+
+
+<link rel="stylesheet" href="style/course.css">
+
+    <h1>Codding Ninja's All the answer in there format</h1>
+  
+  <div class="container">
+    <% if(courses){for(let i in courses){%> 
+    <a href="/lecture/?course=<%= courses[i].id %>">
+        <div class="col">
+            <h2><%= courses[i].title %></h2>
+            <p><%= courses[i].about %></p>
+        </div>
+    </a>
+    <% }} %>
+
+    <form action="/course-create" method="post" id="course-form">
+        <input type="text" name="title" placeholder="name of the course" required>
+        <input type="text" name="about" placeholder="about course" required>
+        <button for="course-form" type="submit">create course</button>
+    </form>
+  </div>
+ 

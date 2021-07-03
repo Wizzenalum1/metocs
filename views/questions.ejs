@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/style/question.css" type="text/css">
+
+<main>
+    <nav>
+        <header>
+            <div class="head-card">
+                <div class="icon"></div>
+                <div class="heading"><%= lecture.title %></div>
+            </div>
+        </header>
+        <div class = nav-head>
+            <% if(lecture.questions){for(let question in lecture.questions){  %>  
+            <div><a href="/question/?lecture=<%=lecture.id%>&question=<%=lecture.questions[question].id %>"> <div><%= lecture.questions[question].title %> </div> <div><%= lecture.questions[question].problem %> </div></a></div>
+            <% }} %>
+        </div>
+    </nav>
+    <div class = "question-panel">
+        <div class="problem-container"><%= questionForPanel.problem %> </div>
+        <div class="solution-container"><%= questionForPanel.solution %> </div>
+        <div class=""></div>
+        <form action="/question-create" method="post" id="question-form">
+            <input type="text" name="title" placeholder="name of the question" required>
+            <input type="text" name="problem" placeholder="problem statement" required>
+            <input type="text" name="solution" placeholder=" solution of the problem " required>
+            <button for="question-form" type="submit">create question</button>
+            <input name ="id" value = <%= lecture.id %> >
+        </form>
+
+    </div>
+</main>

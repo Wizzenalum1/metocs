@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/style/lecture.css">
+
+<div class="container">
+    <header>
+        <h1><%= course.title %></h1>
+        <p><%= course.about %></p>
+    </header>
+    
+    <div class="row">
+        <% if(course.lectures){for(let lecture in course.lectures){ %> 
+        <div class="col">
+            <a href="/question/?lecture=<%= course.lectures[lecture].id %>">
+                <div class = "card">
+                    <div class="card-text"><h2><%= course.lectures[lecture].title %></h2>
+                    <p><%= course.lectures[lecture].about %></p></div>
+                    <div class="card-icon"></div>
+                </div>
+            </a>
+        </div>
+        <% }} %>
+    </div>
+    <form action="/lecture-create" method="post" id="lecture-form">
+        <input type="text" name="title" placeholder="name of the lecture" required>
+        <input type="text" name="about" placeholder="about lecture" required>
+        <input name ="id" value = <%= course.id %> >
+        <button for="lecture-form" type="submit">create lecture</button>
+    </form>
+</div>
